@@ -1,16 +1,14 @@
 use image::{DynamicImage, GenericImageView};
 
-const CHAR_MAP_LEN: usize = 92;
+const CHAR_MAP_LEN: usize = 33;
+const CHAR_MAP_RATIO: f64 = 7.9;
 static CHAR_MAP: [char; CHAR_MAP_LEN] = [
-    ' ', '`', '.', '-', '\'', ':', '_', ',', '^', '=', ';', '>', '<', '+', '!', 'r', 'c', '*', '/',
-    'z', '?', 's', 'L', 'T', 'v', ')', 'J', '7', '(', '|', 'F', 'i', '{', 'C', '}', 'f', 'I', '3',
-    '1', 't', 'l', 'u', '[', 'n', 'e', 'o', 'Z', '5', 'Y', 'x', 'j', 'y', 'a', ']', '2', 'E', 'S',
-    'w', 'q', 'k', 'P', '6', 'h', '9', 'd', '4', 'V', 'p', 'O', 'G', 'b', 'U', 'A', 'K', 'X', 'H',
-    'm', '8', 'R', 'D', '#', '$', 'B', 'g', '0', 'M', 'N', 'W', 'Q', '%', '&', '@',
+    ' ', '`', '.', '-', ',', '=', '>', '<', '+', '*', '/', 'z', '?', ')', 'J', '7', '(', 'm', '8',
+    'R', 'D', '#', '$', 'B', 'g', '0', 'M', 'N', 'W', 'Q', '%', '&', '@',
 ];
 
 fn main() {
-    let filepath = "danielle.jpg";
+    let filepath = "test-image.jpg";
     let img_scale = 16;
 
     let img = match image::open(filepath) {
@@ -34,7 +32,7 @@ fn main() {
 }
 
 fn get_ascii_for_intensity(intensity: f64) -> char {
-    let idx = intensity / 2.8;
+    let idx = intensity / CHAR_MAP_RATIO;
     CHAR_MAP[idx as usize]
 }
 
