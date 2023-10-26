@@ -8,8 +8,9 @@ static CHAR_MAP: [char; CHAR_MAP_LEN] = [
 ];
 
 fn main() {
-    let filepath = "test-image.jpg";
-    let img_scale = 16;
+    let filepath = "cat_img.jpeg";
+    // Orders of magnitude to scale it down by
+    let img_scale = 4;
 
     let img = match image::open(filepath) {
         Ok(img) => img,
